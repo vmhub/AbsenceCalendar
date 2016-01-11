@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Team</title>
+
+</head>
+<body>
+<div class="generic-container" data-ng-controller="TeamController as ctrl">
+    <div class="panel panel-default">
+        <div class="panel-heading"><span class="lead">Team Registration Form </span></div>
+        <div class="formcontainer">
+            <form data-ng-submit="ctrl.submit()" name="teamForm" class="form-horizontal">
+                <input type="hidden" data-ng-model="ctrl.team.id"/>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="tname">Name</label>
+                        <div class="col-md-7">
+                            <input type="text" ng-model="ctrl.team.name" id="tname" class="name form-control input-sm" placeholder="Enter team name"/>
+                            <div class="has-error" ng-show="myForm.$dirty">
+                                <span ng-show="teamForm.tname.$invalid">This field is invalid </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="deptId">DepartmentId</label>
+                        <div class="col-md-7">
+                            <input type="text" data-ng-model="ctrl.team.departmentId" id="deptId" class="form-control input-sm" placeholder="Enter department Id"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="row">-->
+                    <!--<div class="form-group col-md-12">-->
+                        <!--<label class="col-md-2 control-lable" for="email">Email</label>-->
+                        <!--<div class="col-md-7">-->
+                            <!--<input type="email" ng-model="ctrl.user.email" id="email" class="email form-control input-sm" placeholder="Enter your Email" required/>-->
+                            <!--<div class="has-error" ng-show="myForm.$dirty">-->
+                                <!--<span ng-show="myForm.email.$error.required">This is a required field</span>-->
+                                <!--<span ng-show="myForm.email.$invalid">This field is invalid </span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="row">
+                    <div class="form-actions floatRight">
+                        <input type="submit"  value="{{!ctrl.team.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="tForm.$invalid">
+                        <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="tForm.$pristine">Reset Form</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><span class="lead">List of Teams </span></div>
+        <div class="tablecontainer">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Department ID</th>
+                    <th>Department</th>
+                    <th width="20%"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="t in ctrl.teams">
+                    <td><span ng-bind="t.id"></span></td>
+                    <td><span ng-bind="t.name"></span></td>
+                    <td><span ng-bind="t.departmentId"></span></td>
+                    <td><span ng-bind="t.department"></span></td>
+                    <td>
+                        <button type="button" ng-click="ctrl.edit(t.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="ctrl.remove(t.id)" class="btn btn-danger custom-width">Remove</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</form>
+</body>
+<link rel="stylesheet" href="Bootstrap.css">
+<!--<link rel="stylesheet" href="x.css">-->
+<link rel="stylesheet" href="ui-grid.css">
+</html>
