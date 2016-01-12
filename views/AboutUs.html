@@ -1,0 +1,25 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body >
+
+
+
+   <div class="shadow" ng-controller="MainCtrl" style="-webkit-box-shadow: 0 0 5px 0 #86B6CF;
+        -moz-box-shadow: 0 0 5px 0 #86B6CF;
+        box-shadow: 0 0 5px 0 #86B6CF;height:450px">
+
+       <div ui-grid="gridOptions1" ui-grid-pagination class="grid" class="grid" ></div>
+</div>
+</body>
+</html> -->
+
+<div class="shadow" ng-controller="MainCtrl as vm" style="-webkit-box-shadow: 0 0 5px 0 #86B6CF;
+        -moz-box-shadow: 0 0 5px 0 #86B6CF;
+        box-shadow: 0 0 5px 0 #86B6CF;">
+    <div ui-grid="vm.gridOptions" ui-grid-pagination class="grid" ui-grid-edit ></div>
+</div>
